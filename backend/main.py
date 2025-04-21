@@ -6,14 +6,13 @@ import io
 
 app = FastAPI()
 
-# Allow frontend to talk to backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # For development; restrict this in production
+    allow_origins=["*"],  # or set your frontend URL for production
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 @app.post("/predict/")
 async def predict(file: UploadFile = File(...)):
     # Read and process image
