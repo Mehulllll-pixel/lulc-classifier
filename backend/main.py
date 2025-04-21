@@ -4,14 +4,12 @@ from PIL import Image
 import numpy as np
 import io
 
-print("main.py is being run")
-
 app = FastAPI()
 
 # Allow frontend to talk to backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],  # For development; restrict this in production
     allow_methods=["*"],
     allow_headers=["*"],
 )
